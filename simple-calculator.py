@@ -16,8 +16,25 @@ as the user inputs/interacts with the calculator.
 """
 calculator= ""
 
-def add_to_calculator(symbol):
-    pass
+def button_clicked(symbol):
+    """
+    This is a function that handles the button clicks for the
+    calculator. The arguement 'symbol' refers to the button that
+    is being clicked.
+    The  line "global calculator" is used to make the 'calculator'
+    variable accessible and modifiable anywhere within the code.
+    The 'calculator += str(symbol)' line appends the button to
+    the calculation.
+    The 'text_result.delete(1.0, "end")' line clears the 
+    current text in the display.
+    The 'text_result.insert(1.0, calculator)' line updates the
+    display with the new calculation.
+    """
+    global calculator # --> Shares memory
+    calculator += str(symbol) # --> Builds equation
+    text_result.delete(1.0, "end") #--> Fresh screen
+    text_result.insert(1.0, calculator) # --> Shows result
+
 
 def evaluate_calculator():
     pass
@@ -54,6 +71,15 @@ of the the window in pixels. In this case, the window will be
 """
 root.geometry("300x400")
 """
-This line of code sets 
+This line of code createa  blig 2-line text area.
+This is the calculcator screen.
 """
-text_result = tk.Text(root, height=2, width=16, font=("Arial", 24))
+text_result = tk.Text(root, height = 2, width = 16, font = ("Arial", 24))
+"""
+This puts the display at the top of of a 5-column
+grid, spanning all 5 columns. This allows the display
+to be centered and take up the full width of the
+calculator. The grid system is a way to organize
+the layout of the GUI elements in a structured way.
+"""
+text_result.grid(columnspan = 5)
