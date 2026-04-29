@@ -106,6 +106,19 @@ the layout of the GUI elements in a structured way.
 """
 text_result.grid(columnspan = 5)
 
+"""
+The lines of code below create the buttons for the calculator.
+The first loop creates the number buttons (1-9) and arranges 
+them in a 3x3 grid. The second loop creates the operation buttons
+(+, -, *, /) and arranges them in a single column. The last two
+lines create the 'equals' and 'clear' buttons and position them
+appropriately on the grid. Each button is associated with a 
+command that specifies what happens when the button is clicked. 
+For example, when a number button is clicked, it calls the 
+'button_clicked' function with the corresponding number as an 
+argument. When the 'equals' button is clicked, it calls the 
+'evaluate_calculator' function to compute the result.
+"""
 numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
 for i, num in enumerate(numbers):
     row = 2 + (i // 3)
