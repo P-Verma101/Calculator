@@ -5,6 +5,8 @@
 # GUI elements for your application. By importing tkinter, you 
 # can use its functions and classes to build a simple calculator
 # interface.
+Importing tkinter as tk menas that everything must use the
+prefix 'tk.' for anything that is used from this library.
 """
 import tkinter as tk 
 
