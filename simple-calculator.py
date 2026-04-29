@@ -67,7 +67,13 @@ def evaluate_calculator():
 
 
 def clear_calculator():
-    pass
+    """
+    This function clears the calculator.
+    """
+    global calculator
+    calculator = ""
+    text_result.delete(1.0, "end")
+
 
 """
 This line of code create the Main application window. 'tk.Tk()'
@@ -76,17 +82,6 @@ variable that holds a reference to this window. If this line
 is run by itself, it will create an empty window.
 """
 root = tk.Tk()
-
-"""
-This line of code starts the GUI event loop. This keeps the
-window open and responsive. Without this line, the window would
-open and then close right away. This line essentially listens
-to the users interactions with the GUI such as the mouse clicks,
-keyboard input, etc. This updates the display in accordance to 
-the users interactions. This keeps apps running until the user
-closes the window or exits the application.
-"""
-root.mainloop()
 
 """
 This line of code sets the size of the main application window
@@ -110,3 +105,29 @@ calculator. The grid system is a way to organize
 the layout of the GUI elements in a structured way.
 """
 text_result.grid(columnspan = 5)
+
+numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
+for i, num in enumerate(numbers):
+    row = 2 + (i // 3)
+    col = 1 + (i % 3)
+    tk.Button(root, text = num, command = lambda n=num: button_clicked(n), width = 5, font = ("Arial", 14)).grid(row = row, column = col)
+
+tk.Button(root, text = '0', command = lambda: button_clicked('0'), width = 5, font = ("Arial", 14)).grid(row = 5, column = 2)
+
+operations = ['+', '-', '*', '/']
+for i, op in enumerate(operations):
+    tk.Button(root, text = op, command = lambda o=op: button_clicked(o), width = 5, font = ("Arial", 14)).grid(row = 2 + i, column = 4)
+
+tk.Button(root, text = '=', command = evaluate_calculator, width = 5, font = ("Arial", 14)).grid(row = 5, column = 3)
+tk.Button(root, text = 'CLR', command = clear_calculator, width = 5, font = ("Arial", 14)).grid(row = 5, column = 1)
+
+"""
+This line of code starts the GUI event loop. This keeps the
+window open and responsive. Without this line, the window would
+open and then close right away. This line essentially listens
+to the users interactions with the GUI such as the mouse clicks,
+keyboard input, etc. This updates the display in accordance to 
+the users interactions. This keeps apps running until the user
+closes the window or exits the application.
+"""
+root.mainloop()
