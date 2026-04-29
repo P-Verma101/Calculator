@@ -37,7 +37,34 @@ def button_clicked(symbol):
 
 
 def evaluate_calculator():
-    pass
+    """
+    This function calculates the result of the equation. This
+    is the function for the 'equals' button.
+    The first line of code in this function is the same as the 
+    last function.
+    The 'try' block that is used in this function is used for 
+    error protection. 
+    Inside the 'try' block, the 'calculator = str(eval(calculator))'
+    line evaluates the expression in the 'calculator' variable
+    and coverts the result back to a string.
+    The 'text_result.delete(1.0, "end ")' and the 
+    'text_result.insert(1.0, calculator)' lines are the same as
+    in the last function; they clear the display and show the
+    result.
+    The 'except' block is executed if there is catches the errors
+    that may occur during an equation evaluation. If an error
+    occurs, the 'clear_calculator()' function is called to reset
+    the calculator, and the display is updated to show "Error".
+    """
+    global calculator
+    try:
+        calculator =  str(eval(calculator))
+        text_result.delete(1.0, "end")
+        text_result.insert(1.0, calculator)
+    except:
+        clear_calculator()
+        text_result.insert(1.0, "Error")
+
 
 def clear_calculator():
     pass
